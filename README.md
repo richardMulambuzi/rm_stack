@@ -81,6 +81,7 @@ context/               protocol files force-loaded into every session
 skills/                30 skill directories, each with SKILL.md
 command/               slash commands
 plugin/model-router.ts binds agents to healthy models at startup
+tool/env/index.ts      loads .env values into process.env for tools and agents
 scripts/               pre-commit-craft-gate.sh
 install.sh             install the profile
 install-craft-gate.sh  install the commit gate into a repo
@@ -90,4 +91,4 @@ install-craft-gate.sh  install the commit gate into a repo
 
 The org skeleton is [gstack](https://github.com/garrytan/gstack) by Garry Tan. The craft skills are [pstack](https://github.com/cursor/plugins/tree/main/pstack) by poteto. Both are MIT licensed. `context/openagents-repo/` and the agent registry in `config/` derive from OpenAgents Control.
 
-MIT. See [LICENSE](LICENSE) where present.
+MIT. See [LICENSE](LICENSE).
