@@ -1,8 +1,9 @@
 #!/usr/bin/env sh
 # Install the craft-gate pre-commit hook into a target git repository.
 #
-#   sh install-craft-gate.sh          # target defaults to the current directory
-#   sh install-craft-gate.sh ~/code/my-repo
+#   ./install-craft-gate.sh                 # target defaults to the current directory
+#   ./install-craft-gate.sh ~/code/my-repo
+#   ./install-craft-gate.sh --help
 #
 # The hook blocks commits whose staged additions contain AI slop patterns.
 # Bypass with: SKIP_CRAFT_GATE=1 git commit ...
@@ -10,6 +11,20 @@
 set -eu
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
+
+case "${1:-}" in
+  -h|--help)
+    echo "usage: ./install-craft-gate.sh [repo]"
+    echo
+    echo "Copies the craft-gate pre-commit hook into <repo>/.git/hooks/pre-commit."
+    echo "  repo   target git repository (default: current directory)"
+    echo
+    echo "The hook blocks staged AI slop vocabulary and em dashes. Bypass one"
+    echo "commit with: SKIP_CRAFT_GATE=1 git commit ..."
+    exit 0
+    ;;
+esac
+
 TARGET="${1:-.}"
 TARGET="$(cd "$TARGET" && pwd)"
 

@@ -47,13 +47,22 @@ cd rm_stack
 ./install.sh
 ```
 
-`install.sh` copies the stack into `${OPENCODE_HOME:-$HOME/.config/opencode}`. It never deletes existing files, and it skips `.git` and itself. Restart OpenCode afterwards.
+`install.sh` copies the stack into `${OPENCODE_HOME:-$HOME/.config/opencode}`. It never deletes existing files and it skips `.git` and itself. Any destination file whose content differs is copied to `<profile>/.install-backup-<timestamp>/` before it is overwritten, so a local edit is never lost silently. Restart OpenCode afterwards.
 
 Set `OPENCODE_HOME` to install somewhere else:
 
 ```sh
 OPENCODE_HOME=/tmp/profile ./install.sh
 ```
+
+### Check the install
+
+```sh
+./verify.sh                              # checks ~/.config/opencode
+./verify.sh /tmp/profile ~/path/to/repo  # also checks the gate in that repo
+```
+
+`verify.sh` reports a PASS or FAIL for the profile config, the section 7 craft wiring, the model router, the skill count, skill frontmatter, and the gate source. It exits non-zero if anything failed.
 
 ### Arm the commit gate in one of your repos
 
@@ -83,8 +92,9 @@ command/               slash commands
 plugin/model-router.ts binds agents to healthy models at startup
 tool/env/index.ts      loads .env values into process.env for tools and agents
 scripts/               pre-commit-craft-gate.sh
-install.sh             install the profile
+install.sh             install the profile (backs up files it overwrites)
 install-craft-gate.sh  install the commit gate into a repo
+verify.sh              check that an install actually landed
 ```
 
 ## Credits
