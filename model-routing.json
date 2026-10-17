@@ -1,0 +1,209 @@
+{
+  "$comment": "Qoreban Model Fabric \u2014 OpenCode Zen free models only. No external-provider fallback is used.",
+  "settings": {
+    "cooldown_ms": 600000,
+    "unknown_health_policy": "assume_healthy",
+    "health_file": "~/.config/opencode/model-health.json",
+    "top_level_chain": "main",
+    "small_model_chain": "lightweight",
+    "zen_only": true,
+    "require_probe": true
+  },
+  "tiers": {
+    "T1": {
+      "provider": "opencode",
+      "policy": "OpenCode Zen gateway only",
+      "cost": 0
+    }
+  },
+  "chains": {
+    "main": [
+      "opencode/muse-spark-1.3-contributor-free",
+      "opencode/mimo-v2.6-flash-free",
+      "opencode/space-bunny-free",
+      "opencode/nemotron-3.5-lightning-free"
+    ],
+    "executive": [
+      "opencode/muse-spark-1.3-contributor-free",
+      "opencode/space-bunny-free"
+    ],
+    "contract": [
+      "opencode/mimo-v2.6-flash-free",
+      "opencode/muse-spark-1.3-contributor-free"
+    ],
+    "high_volume": [
+      "opencode/space-bunny-free",
+      "opencode/muse-spark-1.3-contributor-free"
+    ],
+    "deep_analysis": [
+      "opencode/muse-spark-1.3-contributor-free",
+      "opencode/nemotron-3.5-lightning-free"
+    ],
+    "backend": [
+      "opencode/muse-spark-1.3-contributor-free",
+      "opencode/mimo-v2.6-flash-free"
+    ],
+    "design_docs": [
+      "opencode/muse-spark-1.3-contributor-free",
+      "opencode/mimo-v2.6-flash-free"
+    ],
+    "lightweight": [
+      "opencode/nemotron-3.5-lightning-free",
+      "opencode/mimo-v2.6-flash-free"
+    ]
+  },
+  "agents": {
+    "builder": {
+      "chain": "main"
+    },
+    "cto": {
+      "chain": "executive"
+    },
+    "api-architect": {
+      "chain": "contract"
+    },
+    "product-manager": {
+      "chain": "executive"
+    },
+    "frontend-architect": {
+      "chain": "contract"
+    },
+    "tech-lead": {
+      "chain": "high_volume"
+    },
+    "qa-engineer": {
+      "chain": "high_volume"
+    },
+    "code-reviewer": {
+      "chain": "high_volume"
+    },
+    "release-manager": {
+      "chain": "high_volume"
+    },
+    "e2e-tester": {
+      "chain": "high_volume"
+    },
+    "frontend-dev": {
+      "chain": "high_volume"
+    },
+    "state-engineer": {
+      "chain": "high_volume"
+    },
+    "security-engineer": {
+      "chain": "deep_analysis"
+    },
+    "devops-engineer": {
+      "chain": "deep_analysis"
+    },
+    "database-engineer": {
+      "chain": "deep_analysis"
+    },
+    "data-engineer": {
+      "chain": "deep_analysis"
+    },
+    "performance-engineer": {
+      "chain": "deep_analysis"
+    },
+    "cicd-engineer": {
+      "chain": "deep_analysis"
+    },
+    "sre-engineer": {
+      "chain": "deep_analysis"
+    },
+    "compliance-engineer": {
+      "chain": "deep_analysis"
+    },
+    "backend-dev": {
+      "chain": "backend"
+    },
+    "auth-engineer": {
+      "chain": "backend"
+    },
+    "integration-engineer": {
+      "chain": "backend"
+    },
+    "async-engineer": {
+      "chain": "backend"
+    },
+    "ui-ux-designer": {
+      "chain": "design_docs"
+    },
+    "design-system-engineer": {
+      "chain": "design_docs"
+    },
+    "documentation-writer": {
+      "chain": "design_docs"
+    },
+    "perf-tester": {
+      "chain": "lightweight"
+    },
+    "observability-engineer": {
+      "chain": "lightweight"
+    },
+    "cost-engineer": {
+      "chain": "lightweight"
+    },
+    "context-bootstrap": {
+      "chain": "lightweight"
+    },
+    "speech-agent": {
+      "chain": "lightweight"
+    },
+    "be-senior-1": {
+      "chain": "backend"
+    },
+    "be-senior-2": {
+      "chain": "backend"
+    },
+    "fe-senior-1": {
+      "chain": "high_volume"
+    },
+    "fe-senior-2": {
+      "chain": "high_volume"
+    }
+  },
+  "models": {
+    "opencode/muse-spark-1.3-contributor-free": {
+      "role": "zen-primary",
+      "ctx": 1048576,
+      "strengths": [
+        "coding",
+        "reasoning",
+        "tools",
+        "long-context"
+      ]
+    },
+    "opencode/space-bunny-free": {
+      "role": "zen-agentic",
+      "ctx": 200000,
+      "strengths": [
+        "agentic",
+        "tools",
+        "implementation"
+      ]
+    },
+    "opencode/mimo-v2.6-flash-free": {
+      "role": "zen-fast",
+      "ctx": 200000,
+      "strengths": [
+        "fast-operations",
+        "lightweight",
+        "contracts"
+      ]
+    },
+    "opencode/nemotron-3.5-lightning-free": {
+      "role": "zen-light",
+      "ctx": 262144,
+      "strengths": [
+        "fast",
+        "ops",
+        "scanning"
+      ]
+    }
+  },
+  "blacklist": {},
+  "speech": {
+    "stt": [],
+    "tts": []
+  }
+}
